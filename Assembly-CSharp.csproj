@@ -58,8 +58,6 @@
      <Compile Include="Assets\Scripts\forUI.cs" />
      <Compile Include="Assets\Scripts\JumpBall.cs" />
      <Compile Include="Assets\Scripts\menuUI.cs" />
-     <Compile Include="Assets\Scripts\NumberPoints.cs" />
-     <Compile Include="Assets\Scripts\PauseScript.cs" />
      <Compile Include="Assets\Scripts\Spawnerboxes.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/voskk/OneDrive/Документы/unity/Test Task/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

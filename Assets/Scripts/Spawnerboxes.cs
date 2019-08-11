@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class Spawnerboxes : MonoBehaviour
 {
-    public float minTime; 
-    public float maxTime;
+    public float minTime;         //минимальное время с которым будут появляться платформы
+    public float maxTime;         //максимальное время 
     public GameObject objToSpawn; //объект, который будет появляться
-    public float timeForDestroy;
-    public float minSize;
-    public float maxSize;
-    public int i;
-    int increaseTime = 1000;
+    public float timeForDestroy;  //время на уничтожение объекта
+    public float minSize;         //минимальный размер объекта
+    public float maxSize;         //максимальный размер объекта
+    private int i;                 //счетчик фреймов
+    private int score;
+    int increaseTime = 1000;      //порог, при котором повышается сложность игры
     GameObject obj;
-    public Text points;
-    public bool isPaused = false;
+    public Text points;            //количество очков, которое выводится на экране
+    public bool isPaused = false;  //проверка на паузу
     public GameObject pauseObj;
 
     void Start()
@@ -39,8 +40,10 @@ public class Spawnerboxes : MonoBehaviour
 
     void Update(){
         Destroy(obj, timeForDestroy);
-        if (!isPaused){
-            i++; 
+        i++; 
+        PlayerPrefs.SetInt("player_score", score);
+        if (!isPaused && i >= 103){
+            score++;
             points.text = (double.Parse(points.text) + .5).ToString();
             if (Input.GetKeyDown(KeyCode.Escape)){
                 Time.timeScale = 0;
@@ -60,9 +63,9 @@ public class Spawnerboxes : MonoBehaviour
             maxSize -= .3f;
             increaseTime += 500;
         }
-        if (i >= 2000){
+        if (score == 2000){
             Application.LoadLevel("win_scene");
         }
-        Debug.Log("counter: " + i);
+        Debug.Log("score " + score);
     }
 }
